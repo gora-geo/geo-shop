@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+
+admin.autodiscover()     # Эта функция пытается импортировать модуль admin каждого установленного приложения.
+                             #  Предполагается, что в этом модуле выполняется
+                              #регистрация моделей в админке.
+
                                        #django ищет адресс введенныйв браузере localhost:8000/landing/-(после8000)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

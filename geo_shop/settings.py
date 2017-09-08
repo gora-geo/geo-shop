@@ -30,13 +30,14 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [               #Кортеж строк, который указывают не все приложения Django используемые в проекте.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'landing',                    #добовляем папку landing в приложения Django используемые в проекте
 ]
 
 MIDDLEWARE = [

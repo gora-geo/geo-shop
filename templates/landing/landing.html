@@ -17,10 +17,30 @@
 
 </head>
 <body>
+<div class="container">   <!--  bootstrap -оформление грница от браузера  -->
 
-    <h1 class="title">Привет1</h1>
-     <h1 class="title">Как дела</h1>
-    {{ name }}
+    <div class="row">    <!-- это bootstrap -оформление  подключение сетки сторка единая -->
+
+        <div class="col-lg-4 col-lg-offset-4">  <!--bootstrap - ообъединение для компа на 4 колонки и смешенно на 4 колонки вправо(всего 12) -->
+
+
+    <h1 class="title">Наш магазин скоро откроеться</h1>
+     <h1 class="title">Оставте ваш еммэил в форме ниже</h1>
+    <div>
+        <form action="" method = "post">{% csrf_token %}
+{#        {{ form }}#}  <!--все поля в одну строку будут выводится  -->
+        {{ form.as_p }} <!--as_p разбивает поля формы построчно  -->
+            <div>
+        <button type="submit" class="btn btn-primary">Отправить</button>  <!--submit-Кнопка для отправки данных формы на сервер.  -->
+           <!-- btn btn-primary-это bootstrap -оформление кнопки  -->
+            </div>
+
+            </form>
+    </div>
+        </div>
+ </div>
+
+{#    {{ name }}#}
 
     <!-- jQuery(ссылка на библиотеку) -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
