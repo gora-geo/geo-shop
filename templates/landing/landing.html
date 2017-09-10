@@ -27,7 +27,7 @@
     <h1 class="title">Наш магазин скоро откроеться</h1>
      <h1 class="title">Оставте ваш еммэил в форме ниже</h1>
     <div>
-        <form action="" method = "post">{% csrf_token %}
+        <form action="" method = "post">{% csrf_token %}  <!--если <form action="" method = "post"> d django пишем  {% csrf_token %} -->
 {#        {{ form }}#}  <!--все поля в одну строку будут выводится  -->
         {{ form.as_p }} <!--as_p разбивает поля формы построчно  -->
             <div>
