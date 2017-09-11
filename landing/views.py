@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import SubscriberForm   #импорт формы SubscriberForm
 
-def landing(request):  #ф-ция принимает request-запррос из браузера
+def promoopen(request):  #ф-ция принимает request-запррос из браузера
     name="safonov gora" #вводим перемнную name
 
     form = SubscriberForm(request.POST or None)   #создание объеката классаSubscriberForm(тоесть формы с полями как Subscribers

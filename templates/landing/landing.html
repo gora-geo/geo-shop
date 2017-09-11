@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- подключение тектовых стилей гугла-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
 
     <!-- Custom styles(подключение пользовательчского стиля из паки static -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -17,28 +17,43 @@
 
 </head>
 <body>
-<div class="container">   <!--  bootstrap -оформление грница от браузера  -->
+<div class="general-container">   <!-- контейнер с классом general-container  описанный css-->
 
-    <div class="row">    <!-- это bootstrap -оформление  подключение сетки сторка единая -->
+    <div class="container top-container">    <!--container- это bootstrap(оформление сетки своей )top-container(класс описываемый в css) -->
 
-        <div class="col-lg-4 col-lg-offset-4">  <!--bootstrap - ообъединение для компа на 4 колонки и смешенно на 4 колонки вправо(всего 12) -->
+        <div class="col-lg-8 col-lg-offset-2"> <!-- bootstrap - ообъединение для компа на 8 колонки и смешенно на 2 колонки вправо(всего 12) -->
 
 
-    <h1 class="title">Наш магазин скоро откроеться</h1>
-     <h1 class="title">Оставте ваш еммэил в форме ниже</h1>
-    <div>
-        <form action="" method = "post">{% csrf_token %}  <!--если <form action="" method = "post"> d django пишем  {% csrf_token %} -->
-{#        {{ form }}#}  <!--все поля в одну строку будут выводится  -->
-        {{ form.as_p }} <!--as_p разбивает поля формы построчно  -->
-            <div>
-        <button type="submit" class="btn btn-primary">Отправить</button>  <!--submit-Кнопка для отправки данных формы на сервер.  -->
+    <h1 class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Наш магазин скоро откроеться!</h1>  <!-- &nbsp;(пробел) -->
+     <h1 class="title">&nbsp;Оставте ваше Имя и Email в форме ниже и мы обязательно собщим вам об окрытии.</h1>
+
+        <form action="" method = "post" class="form-inline">{% csrf_token %}  <!--если <form action="" method = "post"> d django пишем  {% csrf_token %} -->
+
+             <div class="form-group ">   <!-- form-group это bootstrap  css-form-exemple-->
+                  <label class ="label">Email</label>
+                 <div class="form-control">   <!-- form-control это bootstrap  css-form-exemple-->
+                     {{ form.email }}  <!-- выводи элемент формы email инпут который при вводе которого появиться данные в админке-->
+                 </div>
+
+              </div>
+             <div class="form-group">    <!-- form-group это bootstrap  css-form-exemple-->
+                  <label class ="label">Ваше имя</label>
+                 <div class="form-control">     <!-- form-control это bootstrap  css-form-exemple-->
+                      {{ form.name }}  <!-- выводи элемент формы name инпут который при вводе которого появиться данные в админке-->
+                    </div>
+
+             </div>
+
+          <!--  <div>
+                  <button type="submit" class="btn btn-primary">Отправить</button>  <!--submit-Кнопка для отправки данных формы на сервер.  -->
            <!-- btn btn-primary-это bootstrap -оформление кнопки  -->
-            </div>
-
+     <!--       </div>   -->
+               <button type="submit" class="btn btn-primary">Отправить</button>
             </form>
     </div>
-        </div>
- </div>
+
+
+</div>
 
 {#    {{ name }}#}
 
