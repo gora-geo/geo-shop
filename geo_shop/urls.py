@@ -23,7 +23,9 @@ admin.autodiscover()     # Эта функция пытается импорти
                                        #django ищет адресс введенныйв браузере localhost:8000/landing/-(после8000)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('landing.urls')), # include(включить из папки landing  из файла url)
+    url(r'^', include('landing.urls')), # include(включить из папки landing  из файла url,тоесть включить по адресу указанному в этом пути страницу)
                                         # нужно смотреть адреса в папке landing лежит фаил urls(адрес относительно проекта)
+    url(r'^', include('products.urls')), # include(включить из папки products  из файла urlтоесть включить по адресу указанному в этом пути страницу)
+    url(r'^', include('orders.urls')), # include(включить из папки landing  из файла urlтоесть включить по адресу указанному в этом пути страницу)
 
 ]

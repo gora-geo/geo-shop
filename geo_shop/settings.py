@@ -37,7 +37,11 @@ INSTALLED_APPS = [  #Кортеж строк, который указывают 
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'landing',                    #добовляем папку landing в приложения Django используемые в проекте
+    'orders',                    #добовляем папку orders в приложения Django используемые в проекте
+    'products',                    #добовляем папку products в приложения Django используемые в проекте
+
 ]
 
 MIDDLEWARE = [
