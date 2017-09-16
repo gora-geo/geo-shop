@@ -1,8 +1,8 @@
 from django.db import models  #импорт приложения models
 from products .models import Product #импортируе модуль Product чтобыработала строка  product = models.ForeignKey(Product, blank=True, null=True, default=None)
-from django.db.models.signals import post_save   #импрот метода save(после нажати кнопки в админке)
+from django.db.models.signals import post_save   #импрот метода post_save(после нажати кнопки save в админке)
 
-class Status(models.Model):
+class Status(models.Model):    #создание модели статус заказа
     name = models.CharField(max_length=24, blank=True, null=True, default=None,verbose_name='статус заказа')
     is_active = models.BooleanField(default=True,verbose_name='Активный')
     created = models.DateTimeField(auto_now_add=True, auto_now=False,verbose_name='Создан')
@@ -37,7 +37,7 @@ class Order(models.Model):#создание класса Order наслед.от
 
     def save(self, *args, **kwargs):  #переопределеие save в таблице заказы
 
-        super(Order, self).save(*args, **kwargs)
+        super(Order, self).save(*args, **kwargs)#шаблон как пример между этими сторокам можно писать логику
 
 class ProductInOrder(models.Model):  #создание класса ProductInOrder наслед.от Model-создает таблицу в базе данных
     order = models.ForeignKey(Order, blank=True, null=True, default=None,verbose_name='Заказ')  #models.ForeignKey -- ссылка на другую модель-(Order)
@@ -59,14 +59,14 @@ class ProductInOrder(models.Model):  #создание класса ProductInOrd
 
 
     def save(self, *args, **kwargs):     #переопределение метода save тоесть,оесть что будет выполняться при нажатии save в таблице товар в заказе
-        price_per_item = self.product.price   #читывание цены товара
-        self.price_per_item = price_per_item
-        print(self.nmb)
-        self.total_price = int(self.nmb) * price_per_item  #умножение получение цены товара на количество товара общей цены
+        price_per_item = self.product.price   #считывание цены товара из модели(таблицы)продукты
+        self.price_per_item = price_per_item  #добовление считываемой цены товара в запись price_per_item
+        print(self.nmb)  #вывод количестква в треминал
+        self.total_price = int(self.nmb) * price_per_item  #(self текушее которое в водим в админке или форме)умножение получение цены товара на количество товара общей цены в таблице товары в заказе тоесть при выборе например 2 товаров
 
-        super(ProductInOrder, self).save(*args, **kwargs)
+        super(ProductInOrder, self).save(*args, **kwargs)#конец преопрделение save
 
-def product_in_order_post_save(sender, instance, created, **kwargs):  #фция товар в заказе после нажатия save
+def product_in_order_post_save(sender, instance, created, **kwargs):  #фция товар в заказе после нажатия save(котороая будет вызиваться в метоед post_save(ниже)- тоесть save после нажатия
     order = instance.order  #создание экземпляра класса заказ
     all_products_in_order = ProductInOrder.objects.filter(order=order) #выводяться все товары в данном заказе
 
@@ -74,8 +74,8 @@ def product_in_order_post_save(sender, instance, created, **kwargs):  #фция 
     for item in all_products_in_order:
         order_total_price += item.total_price    #подсчет общей сумы заказа
 
-    instance.order.total_price = order_total_price
-    instance.order.save(force_update=True)
+    instance.order.total_price = order_total_price    #сохранение в таблице(модели )заказы общей стоимости заказа
+    instance.order.save(force_update=True)             #сохранение кторое должно обновить текущую запись при сохранении
 
 
-post_save.connect(product_in_order_post_save, sender=ProductInOrder)  #сохраниене  общей цены товар(в модели)товар в заказе
+post_save.connect(product_in_order_post_save, sender=ProductInOrder)  #  после нажатия кнопеи save будет вызываться фуция product_in_order_post_save  sender(отправиттель)таблица товар в заказе
