@@ -21,7 +21,8 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, blank=True, null=True, default=None,verbose_name='продукт')
     image = models.ImageField(upload_to='products_images/',verbose_name='Картинка')  #путь к картинке в папек static/products_images/
-    is_active = models.BooleanField(default=True,verbose_name='активный')
+    is_main=models.BooleanField(default=False,verbose_name='Главная')   #поле модели(таблицы)-главная тоест какая картинка если их несколько будет выводиться первой
+    is_active = models.BooleanField(default=True,verbose_name='активный')  #активна ли картинка
     created = models.DateTimeField(auto_now_add=True, auto_now=False,verbose_name='создан')
     updated = models.DateTimeField(auto_now_add=False, auto_now=True,verbose_name='обновлен')
 
