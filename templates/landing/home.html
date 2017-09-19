@@ -5,36 +5,45 @@
 {% block content %}
 
 
-       <div class="section section-top">
+       <div class="section section1">
 
         <div class="container">
 
             <div class="row">
-            {% for product_image in products_images %}
-{#                {% for product in products %}#}
-
-               <div class="col-lg-3">
-                  <div class="product-item">
-                      <div >
 
 
 
-                          <img src="{{ product_image.image.url }}" class="img-responsive">
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       Новые поступления
+                   </h1>
+                   {% for product_image in products_images %}
 
-                      </div>
-                  <h4>{{ product_image.product.name }}</h4>
-                      <div>
-                          {{product_image.product.price }} руб.
-                      </div>
+                       {% include 'landing/product_item.html' %}
+                {% endfor %}
 
-                      <div class="add-to-cart-btn">
-                          <button class="btn btn-success">
-                              Добавить в корзину
-                          </button>
-                      </div>
-                  </div>
 
                </div>
+
+            </div>
+        </div>
+       </div>
+
+
+
+
+     <div class="section section2 totalstation-container">
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       Тахеометры
+                   </h1>
+                   {% for product_image in products_images_total_station %}
+                 {% include 'landing/product_item.html' %}
                 {% endfor %}
 
 
@@ -43,5 +52,101 @@
 
             </div>
         </div>
-       </div>
+  </div>
+
+
+
+<div class="section section3 totalstation-container">
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       GPS-ПРИЕМНКИ
+                   </h1>
+                   {% for product_image in products_images_gps %}
+                 {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+
+
+               </div>
+
+            </div>
+        </div>
+  </div>
+
+<div class="section section4 totalstation-container">
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       Цифровые нивелиры
+                   </h1>
+                {% for product_image in products_images_nivelir %}
+                   {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+
+
+               </div>
+
+            </div>
+        </div>
+  </div>
+
+
+
+<div class="section section5 totalstation-container">
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       Сканеры
+                   </h1>
+                   {% for product_image in products_images_scaner %}
+                 {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+
+
+               </div>
+
+            </div>
+        </div>
+  </div>
+
+
+<div class="section section6 totalstation-container">
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class="col-lg-12">
+                   <h1 class="text-center">
+                       Лазерные рулетки
+                   </h1>
+                   {% for product_image in  products_images_lruletca %}
+                 {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+
+
+               </div>
+
+            </div>
+        </div>
+  </div>
+
+
+
 {% endblock %}

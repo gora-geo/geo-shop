@@ -18,5 +18,9 @@ def promoopen(request):  #ф-ция promoopen принимает request-зап�
 
 def home(request): #ф-ция home принимает request-запррос из браузера
     products_images=ProductImage.objects.filter(is_active=True,is_main=True)  #переменая куда входят все объеты класса ProductImage c галками активный и главная
-
+    products_images_total_station=products_images.filter(product__category__id=1) #product__category__id=1-номер посчету котегории которую сохраняли в админке тоеть когда на товаре выбираешь категорию какя она в списке
+    products_images_gps=products_images.filter(product__category__id=2)
+    products_images_nivelir=products_images.filter(product__category__id=5)
+    products_images_scaner=products_images.filter(product__category__id=3)
+    products_images_lruletca=products_images.filter(product__category__id=4)
     return render(request, 'landing/home.html', locals())  #ответ на request отрисовка страница передача перемееной

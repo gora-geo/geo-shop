@@ -5,6 +5,14 @@ class ProductImageInline(admin.TabularInline): #TabularInlineподкласс In
     model = ProductImage
     extra = 0       # Указывает количество пустых форм для добавления объектов в наборе форм.
 
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in ProductCategory._meta.fields]
+
+    class Meta:
+        model = ProductCategory
+
+admin.site.register(ProductCategory, ProductCategoryAdmin)
+
 class ProductAdmin (admin.ModelAdmin):
     list_display = [field.name for field in Product._meta.fields]
     inlines = [ProductImageInline]    #добовление в данную таблицу в админке (таблицу продукта) таблицы (фотографии продукта)

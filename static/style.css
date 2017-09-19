@@ -16,11 +16,20 @@ html,body{
     background-color: white;    /*цвет фона*/
     border: 1px solid lightgrey;   /*граница элемента величина стиль цвет*/
     position: relative;       /*позиция -relative-Положение элемента устанавливается относительно его исходного места.*/
-    padding: 5px;           /*отступ содержимого от края элемента*/
+    padding: 10px 0 10px 0;           /*отступ содержимого от края элемента*/
     text-align: center;         /*выравнивание текста*/
 }
 .add-to-cart-btn{             /*стиль контейнера с кнопкой*/
     position: absolute;       /*позиция absolute-тоесть положение задаеться от элемента предка в данном примере product-item ниже элементы задают положение*/
     bottom: 15px;            /*смешение от нижниге края*/
     left: 50px;               /*смешение от левого края*/
+}
+.discount-container{
+    position: absolute;
+    top:10%;
+    background: #55e073;
+    width: 30%;
+    color: white;
+    font-weight: 700;
+    padding: 3px;
 }
