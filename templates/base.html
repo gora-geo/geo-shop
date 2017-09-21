@@ -18,19 +18,19 @@
 
 </head>
 <body>
-<div class="wrapper">   <!-- контейнер с классом general-container  описанный css-->
-<div class="wrapper-content">
+<div class="wrapper">   <!-- контейнер с классом wrapper(перевод обертка)  -->
+<div class="wrapper-content">  <!-- контейнер с классом wrapper-content(перевод контент оберки)  описанный css-->
 
-        {% include 'navbar.html' %}
+        {% include 'navbar.html' %}   <!-- include 'navbar.html' включить base.html кот из файла navbar.html путь файла от этого файла-->
         {% block content %}
-
+{#                     <!-- сюда будет вставляться содержимое из других файлов котррые будет заключаться {% block content %}  и {% endblock %}-->#}
 
         {% endblock content %}
 
 
 </div>
 </div>
-{% include 'footer.html' %}
+{% include 'footer.html' %}  <!-- include 'footer.html' включить base.html кот из файла footer.html путь файла от этого файла-->
 
 {#    {{ name }}#}
 

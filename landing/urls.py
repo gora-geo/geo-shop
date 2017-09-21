@@ -4,7 +4,7 @@ from landing import views #импотриуем из паки landig фаил vi
 from django.conf import settings   #импорт метода settings
 from django.conf.urls.static import static #импорт метода static
 urlpatterns = [
-    url(r'^$', views.home, name='home'), #r'^$'-адресс страницы localhost:8000
+    url(r'^$', views.home, name='home'), #r'^$'-адресс страницы localhost:8000  #  в файле views вызываеться ф-ция home
     url(r'^promoopen/', views.promoopen, name='promoopen'), #promoopen/(адрес в браузере-localhost:8000/promoopen/,
                                                       #  в файле views вызываеться ф-ция promoopen
 

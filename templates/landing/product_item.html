@@ -1,22 +1,25 @@
-
-                       <div class="col-lg-3">
-                  <div class="product-item">
+                     {# фрагмен кода который описывает ячейку с товаров(priduct-item-товарная позиция) #}
+                       <div class="col-lg-3"> {# контейнер bootstrap который занимаеть 3 столбца из 12 #}
+                  <div class="product-item">    {#контейнер class="product-item"--описан в stylt.css #}
                       <div >
-                          <img src="{{ product_image.image.url }}" class="img-responsive">
+                          <a href="{% url 'product' product_image.product.id %}">   {# ссылка на объект класса product по id #}
+                          <img src="{{ product_image.image.url }}" class="img-responsive"> {# ссылка на картинку по юрл #}
+                          </a>
+
 
                       </div>
-                      {% if product_image.product.discount %}
-                      <div class="discount-container">
-                          <span>{{ product_image.product.discount }}%</span>
+                      {% if product_image.product.discount %}   {# если есть скидка тоесть знасенре введинов админке #}
+                      <div class="discount-container">  {# описан в style css #}
+                          <span>{{ product_image.product.discount }}%</span> {# span-строчный элемент #}
                       </div>
                       {% endif %}
-                  <h4>{{ product_image.product.name }}</h4>
+                  <h4>{{ product_image.product.name }}</h4>   {# вывод имени продукта #}
                       <div>
-                          {{product_image.product.price }} руб.
+                          {{product_image.product.price }} руб.   {# вывод цены продукта #}
                       </div>
 
-                      <div class="add-to-cart-btn">
-                          <button class="btn btn-success">
+                      <div class="add-to-cart-btn">   {# описан style css #}
+                          <button class="btn btn-success">  {# оформление кнопики  в bootstrap #}
                               Добавить в корзину
                           </button>
                       </div>

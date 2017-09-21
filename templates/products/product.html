@@ -1,0 +1,71 @@
+{% extends 'base.html' %}      {# фрагмент кода который вставляеться в base.html(между{% block content %} и  {% endblock content %}  #}
+{% load static %}              <!--загрузить паку static(load-агрузить)-->
+
+
+{% block content %}            {# начало блока контент #}
+ <div class="container">         {# Он имеет строго определённую ширину для определённого типа устройств. Т.е. для одного устройства контейнер имеет одну ширину, для другого устройства - другое значение ширины. Bootstrap требует этот элемент для row(обязательный)тип устройства задаеться ниже у нас lg-компьютер #}
+
+        <div class="row">        {#1 ряд в строке  в бутстрепе этозадаетьсясетка описанная ниже #}
+
+            <div class="col-lg-6">   {# ряд или ячейка будет сосаять 6 столбцов из 12 #}
+
+                {% for image_item in product.productimage_set.all %}     {# product.productimage_set.all(product-ссылка на текуший продукт productimage-название модели МАЛЕНЬКИМИ БУКВАМИ,_set.all(вывод всех картинок) #}
+
+                    <div class="product-image-item">  {# описан в stylt.css #}
+
+                        <img src="{{ image_item.image.url }}" class="img-responsive">   {# сылка на кртинку #}
+
+                   </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="col-lg-6">      {# 2 ряд в строке-ряд или ячейка будет сосаять 6 столбцов из 12 #}
+
+                <h1 class="text-center">  {# свойство bootstrap при которором тект выраниваеться по центрув что применимо  токо  к этому заголовку #}
+
+                   {{ product.name }}  {# вывод имени  #}
+
+                </h1>
+
+                <div class="">
+
+                   <p>
+
+                     Цена: {{ product.price }}  {# вывод цены #}
+
+                    </p>
+
+                </div>
+
+               <div class="">
+<div>
+  {# вставляем навигационную панель из bootstrap #}
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#description" aria-controls="home" role="tab" data-toggle="tab"> {# "#description"-сылка на id описаноое ниже в   <!-- Tab panes --> #}
+            Описание
+        </a></li>
+    <li role="presentation"><a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">   {# "#delivery"-сылка на id описаноое ниже в   <!-- Tab panes --> #}
+        Доставка
+    </a></li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content product-description">
+    <div role="tabpanel" class="tab-pane active" id="description">
+        {{ product.description }}   {# вывод атрибута description класса Product #}
+    </div>
+    <div role="tabpanel" class="tab-pane" id="delivery">
+        <h3>Доставка осуществляеться до 22:00 по Москве в пределах МКАД</h3>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+{% endblock %}

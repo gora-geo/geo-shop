@@ -33,3 +33,23 @@ html,body{
     font-weight: 700;
     padding: 3px;
 }
+
+.wrapper-content{  /*перевод контент оберки*/
+    overflow: auto; /*если контент будет вылазить за рамки будет автоматически добовляться полоса прокрутки*/
+    padding-bottom: 180px; /*расстояние от внутреннего края рамки элемента до воображаемого прямоугольника, ограничивающего его содержимое тоесть тоеть растояние от низа 180пикселей*/
+}
+
+.footer{
+    position: relative;
+    margin-top: -180px; /* negative value of footer height */
+    height: 180px;
+    clear: both;
+    background-color: white;
+}
+.product-description{
+    padding: 10px;
+}
+.product-image-item{
+    padding: 5px;
+    margin-bottom: 5px;
+}
