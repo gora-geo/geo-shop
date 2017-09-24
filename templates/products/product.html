@@ -64,6 +64,17 @@
     </div>
 
   </div>
+    <form id="form_buying_product" class=" form-inline">   {# добовляем форму form-inline form-inline(в бутстрепе форма всеэлементы формы будут расположены в одну строку  #}
+        <input type="number" class="form-control" name="number" id="number">  {# поле ввода со стрелочками для чисел  form-control(bootstrap-чтобы установить им ширину, равную 100% (всю доступную ширину родительского элемента).) #}
+
+    <button type="submit"  id="submit_btn" class="btn btn-success btn-buy"        {# type="submit"(кнопка для отправки данных на сервер) btn btn-success(оформление bootstrap) btn-buy-описан в style.css #}
+            data-product_id = "{{ product.id }}"   {# data-это атрибут универсальный для всех тегов с изменяюшимися значениями здесь задаем data-product_id(который будет меняться от значения по перемменой  product.id, #}
+            data-name="{{ product.name }}"    {# data-это атрибут универсальный для всех тегов с изменяюшимися значениями здесь задаем data-name(который будет  меняться от значения по перемменой  product.name#}
+            data-price="{{ product.price }}"  {# аналогично строчке выше #}
+           >
+        Купить
+    </button>
+         </form>
 
 </div>
 </div>
