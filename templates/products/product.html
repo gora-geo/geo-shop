@@ -64,7 +64,7 @@
     </div>
 
   </div>
-    <form id="form_buying_product" class=" form-inline">   {# добовляем форму form-inline form-inline(в бутстрепе форма всеэлементы формы будут расположены в одну строку  #}
+    <form id="form_buying_product" class=" form-inline" action="{% url 'basket_adding' %}"> {% csrf_token %}   {# добовляем форму form-inline form-inline(в бутстрепе форма всеэлементы формы будут расположены в одну строку  {% csrf_token %}-нужен чтобы не делать пост запросы со сторнних сайтов#}
         <input type="number" class="form-control" name="number" id="number">  {# поле ввода со стрелочками для чисел  form-control(bootstrap-чтобы установить им ширину, равную 100% (всю доступную ширину родительского элемента).) #}
 
     <button type="submit"  id="submit_btn" class="btn btn-success btn-buy"        {# type="submit"(кнопка для отправки данных на сервер) btn btn-success(оформление bootstrap) btn-buy-описан в style.css #}
