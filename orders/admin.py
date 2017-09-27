@@ -34,3 +34,12 @@ class ProductInOrderAdmin (admin.ModelAdmin):  #создает таблицу в
         model = ProductInOrder
 
 admin.site.register(ProductInOrder, ProductInOrderAdmin)
+
+
+class ProductInBasketAdmin (admin.ModelAdmin):  #создает таблицу в админке (товар в корзине(в order)
+    list_display = [field.name for field in ProductInBasket._meta.fields]  #делает видимыми все поля
+
+    class Meta:                       #доп настройки
+        model = ProductInBasket        #оворит о том что мы настри ваем модель ProductInBasket
+
+admin.site.register(ProductInBasket, ProductInBasketAdmin)  #регистарация на сайте админки(localhost:8000/admin) в таблице(модели)  ProductInBasket таблицы(модели)ProductInBasketAdmin
