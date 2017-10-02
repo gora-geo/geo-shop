@@ -68,6 +68,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'orders.context_processors.getting_basket_info',   #добовляем наш контекс процессор(такая чтука djangoo которая видна на всех страницах)(находиться oredrs/context_processors/getting_basket_info
+
             ],
         },
     },

@@ -33,10 +33,31 @@
           <ul class="nav navbar-nav navbar-right">
 
                <div class="basket-container">
-                   <a href="">Корзина <span id="basket_total_amount"></span><span id="basket_total_nmb"></span></a>
+                   <a href="">Корзина <span id="basket_total_amount"></span><span id="basket_total_nmb">
+
+                         {% if products_total_nmb %}       {# переменная описанная в context_processors.py(списокобъетыв находяшихся в корзине )(условие еслиона существует#}
+                           ({{ products_total_nmb }})     {# выводим переменую в html если она есть #}
+                      {% else %}
+                         (0)                  {# выводим ноль если ее нет #}
+                      {% endif %}
+                   </span>
+                   </a>
               <div class="basket-items hidden">   {# hidden-элемент становиться невидимым #}
                   <ul class="">
-                      <li>wewe</li>
+                       {% for product_in_basket in products_in_basket %}   {# запиус цикла поо перебору значений перемменой(словаря) products_in_basket описанной в orders/views #}
+
+
+                               <li>
+
+                                  {{ product_in_basket.product.name }} {{ product_in_basket.nmb }} шт.        {# вывод имени и количества по  элеменнту цикла #}
+
+                                    по {{ product_in_basket.price_per_item }} руб.          {# вывод цены по элементу цикла #}
+                                    <a class="delete-item" href="" data-product_id="{{ product_in_basket.id }}">x</a>     {# вывод крестика для удаление класса delete-item  data-product_id(дата атрибут атрибут который меняет значение по id и присвоение ему значению по значению id элемента цикла#}
+
+
+                                </li>
+
+                  {% endfor %}
 
                   </ul>
               </div>
