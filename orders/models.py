@@ -1,6 +1,7 @@
 from django.db import models  #импорт приложения models
 from products .models import Product #импортируе модуль Product чтобыработала строка  product = models.ForeignKey(Product, blank=True, null=True, default=None)
 from django.db.models.signals import post_save   #импрот метода post_save(после нажати кнопки save в админке)
+from django.contrib.auth.models import User  #импортирование стандартоного метода User,для создания пользователя
 
 class Status(models.Model):    #создание модели статус заказа
     name = models.CharField(max_length=24, blank=True, null=True, default=None,verbose_name='статус заказа')
@@ -16,6 +17,7 @@ class Status(models.Model):    #создание модели статус за�
         verbose_name_plural = 'Статусы заказа'
 
 class Order(models.Model):#создание класса Order наслед.от Model-создает таблицу в базе данных
+    user = models.ForeignKey(User, blank=True, null=True, default=None)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)#total price for all products in order
     customer_name = models.CharField(max_length=64, blank=True, null=True, default=None,verbose_name='Имя заказчика') #тоесть Orders модель создаст в бвзе данных таблицу с полями customer_name CharField-так мы определяем текстовое поле с ограничением на количество символов.
     customer_phone = models.CharField(max_length=48, blank=True, null=True, default=None,verbose_name='Телефон заказчика')#blank=True,проверка данных в форме позволит сохранять пустое значение в поле. При blank=False поле будет обязательным.
