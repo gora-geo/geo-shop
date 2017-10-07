@@ -3,7 +3,7 @@ from .models import ProductInBasket  #импорт модели ProductInBasket
 def getting_basket_info(request):    #вводим функцию контект-процессора
     session_key = request.session.session_key    #вводим перемменую session_key в ответ с браузера
     if not session_key:                          #если нет ключа сесии(..._)
-
+        request.session["session_key"] = 123
         request.session.cycle_key()                 #(...)создает его
 
 

@@ -7,4 +7,8 @@ urlpatterns = [
     url(r'^basket_adding/$', views.basket_adding, name='basket_adding'),   #basket_adding/(адрес в браузере-localhost:8000/basket_adding/,
                                                                    #  в файле views вызываеться ф-ция basket_adding
 
+    url(r'^checkout/$', views.checkout, name='checkout'),    #checkout/(адрес в браузере-localhost:8000/checkout/,
+                                                               #  в файле views вызываеться ф-ция checkout
+
+
 ]

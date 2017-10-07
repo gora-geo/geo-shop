@@ -1,0 +1,66 @@
+{% extends 'base.html' %}           {# фрагмент кода который вставляеться в base.html(между{% block content %} и  {% endblock content %}  #}
+{% load static %}              <!--загрузить паку static(load-агрузить)(где храняться css,js,фотки и тд)-->
+
+{% block content %}      {# начало блока контент(то что вставляемм в base) #}
+    <div class="container">          {# Он имеет строго определённую ширину для определённого типа устройств. Т.е. для одного устройства контейнер имеет одну ширину, для другого устройства - другое значение ширины. Bootstrap требует этот элемент для row(обязательный)тип устройства задаеться ниже у нас lg-компьютер #}
+        <div class="row">              {#1 ряд в строке  в бутстрепе этозадаетьсясетка описанная ниже #}
+            <div class="col-lg-12">       {# ряд или ячейка будет сосаять 12 столбцов из 12 #}
+                 <h3 class="text-center">Товары в корзине</h3>    {# text-center -в bootstrp выравнивание текста внутри элемеента(conteiner) #}
+                 <h5 class="text-center">Общая стоимость {{ request.session.basket.total_amount }} руб.</h5>         {# {{ request.session.basket.total_amount }} -выводим значение переменной total_amount(описана scripts.js) в текущей сессии(возможно это не нужно проверю позже)#}
+                         {{ request.session.basket.products }}    {# вывод переменной products товары в корзине(возможноэто не нужно проверю позже) #}
+
+            <form  class="form-horizontal" method="post">{% csrf_token %}    {#form-horizonta-в bootstrep элементы формы будут распологаться горизонтально, method="post"-методпостобработка {% csrf_token %}-нужен чтобы не делать пост запросы со сторнних сайтов#}
+             <table class="table text-center">  {#table  text-center -в бутстреп выранивание текта по центру в каждойячейкетаблицы #}
+                        <thead>          {# описание заголовк таблицы #}
+                             <tr>             {# описание строки #}
+                                 <th>Название товара</th>    {# описание столбца #}
+                                 <th>Количесво</th>
+                                 <th>Цена за единицу</th>
+                                 <th>Общая цена</th>
+                             </tr>
+                        </thead>
+                         <tbody>                                                {# описание тела таблицы #}
+                            {% for product_in_basket in products_in_basket %}    {# запуск цикла который  моет переберать значения переменой products_in_basket(товары в корзине) которая была введене в orders/views.py #}
+                                <tr>                                              {# начинаем описание стороки таблицы  #}
+                                   <td>                                           {# описание столбца первого #}
+                                       {{ product_in_basket.product.name }}      {# вывод значения product_in_basket в нем переменой product(описаной в модели ProductInBasket(order/models)) а из нее считываем name(описанрой в модели Product(product/models)  #}
+                                   </td>
+                                   <td>                                                              {# описанние следующего столбца #}
+                                       <input value="{{ product_in_basket.nmb }}" type="number"                                        {#ввод поля ввода значение которое будет написано в поле = {{ product_in_basket.nmb }}(количество товаров вкорзине),type="number"-значитчтополе ввода будет со стрелочками для увеличения количества#}
+                                               class="product-in-basket-nmb" name="product_in_basket_{{ product_in_basket.id }}">       {# задаем ксласс=product-in-basket-nmb для input(поля вввода) и имя product_in_basket_{{ product_in_basket.id(номер товара в базе  данных можно посмотретьв админке #}
+
+                                   </td>
+                                   <td>                         {# начинаем описание следующего столбца  #}
+                                       <span class="product-price">                    {# вводим сторочный элемент с классом product-price #}
+                                            {{ product_in_basket.price_per_item }}        {# вывод значения ппеременной  price_per_item(цена за единицу товара) описангой в ProductInBasket#}
+                                       </span>
+
+
+                                   </td>
+                                   <td>                                                  {# начинае описание следующего столбца #}
+                                       <span class="total-product-in-basket-amount">      {# вводим сторочный элемент с классом product-pricetotal-product-in-basket-amount #}
+                                       {{ product_in_basket.total_price }}  {# вывод значение переменной total_price (общая цена) описаной ProductInBasket #}
+                                           </span>
+
+                                   </td>
+                                </tr>
+                            {% endfor %}     {# конец циклаа #}
+
+                        </tbody>
+                       </table>
+            <div class="text-right">      {# text-right-в bootstrap выврвнивание текста справа #}
+                          <b>Сумма заказа: </b><span id="total_order_amount">54</span>        {# <b>-устанавливает жирное  начертание шрифта,вводи строчного элемента  с id="total_order_amount" и значение ля примера 54 сюда будет выводиться общая сумма из scripts.js#}
+                      </div>
+             <div class="text-right">          {# text-right-в bootstrap выврвнивание текста справа #}
+                        <button type="submit" class="btn btn-primary btn-lg">Заказать</button>   {# вводим кнопку типаsubmit-кнопка для отправки данных на сервер btn btn-primary btn-lg-оформление кнопки ootstrap #}
+                    </div>
+
+             </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.http import JsonResponse   #импортируем JsonResponse(которое отдает данныен или ответ в javascript)
 from .models import ProductInBasket   #импортируем модель ProductInBasket
+from django.shortcuts import render
 
 def basket_adding(request):   #вводим функцию basket_adding(добовлениев карзину)
     return_dict = dict()   #введем переменную return_dict которая равна пустому словарю,dict()-это фукнукция pythhon которая создает словари
@@ -41,3 +42,13 @@ def basket_adding(request):   #вводим функцию basket_adding(доб�
         return_dict["products_total_nmb"] = products_total_nmb #записываем в переменную (словарь)по ключу  products_total_nmb,значение переменой products_total_nmb
 
     return JsonResponse(return_dict)  # возврат переменной return_dict(ответный словарь) в javascript
+
+
+def checkout(request):         #вводим функцию checkout(проверка)
+
+    session_key = request.session.session_key             #вводим переменную session_key = ключу сесии от браузера
+    products_in_basket = ProductInBasket.objects.filter(session_key=session_key, is_active=True)    #вводим переменную products_in_basket(товары в к
+    print (products_in_basket)                   #выводим переменную products_in_basket в терминал
+
+    return render(request, 'orders/checkout.html', locals())   #render выполняет указанный шаблон тоесть отрисовывает его,orders/checkout.html-путь до файла html в templates
+                                                                   # а ф-ция возврашает его и введеные переменные передает на шаблон
