@@ -27,5 +27,7 @@ urlpatterns = [
                                         # нужно смотреть адреса в папке landing лежит фаил urls(адрес относительно проекта)
     url(r'^', include('products.urls')), # include(включить из папки products  из файла urlтоесть включить по адресу указанному в этом пути страницу)
     url(r'^', include('orders.urls')), # include(включить из папки landing  из файла urlтоесть включить по адресу указанному в этом пути страницу)
+    url(r'^', include('contact.urls')),
+    url(r'^', include('prog.urls')),
 
 ]
