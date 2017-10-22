@@ -19,9 +19,11 @@
                       </div>
 
                       <div class="add-to-cart-btn">   {# описан style css #}
-                          <button class="btn btn-success">  {# оформление кнопики  в bootstrap #}
-                              Добавить в корзину
+                            <a href="{% url 'product' product_image.product.id %}">   {# ссылка на объект класса product по id #}
+                          <button class="btn btn-success" id="bt">  {# оформление кнопики  в bootstrap #}
+                              Купить
                           </button>
+                                </a>
                       </div>
                   </div>
                  </div>
