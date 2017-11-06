@@ -1,0 +1,37 @@
+{% extends 'base.html' %}      {# фрагмент кода который вставляеться в base.html(между{% block content %} и  {% endblock content %}  #}
+{% load static %}              <!--загрузить паку static(load-агрузить)-->
+
+
+{% block content %}            {# начало блока контент #}
+     <div class="container">         {# Он имеет строго определённую ширину для определённого типа устройств. Т.е. для одного устройства контейнер имеет одну ширину, для другого устройства - другое значение ширины. Bootstrap требует этот элемент для row(обязательный)тип устройства задаеться ниже у нас lg-компьютер #}
+
+        <div class="row">        {#1 ряд в строке  в бутстрепе этозадаетьсясетка описанная ниже #}
+
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="panel  panel-primary">
+                    <div class="panel-body text-center">
+                        <h3>
+                            из SDR(Sokkia,Topcon) в n,x,y,z,kod
+                        </h3>
+                    <hr>
+                   <form method="post" action="" enctype="multipart/form-data"> {% csrf_token %}
+                       <div class="form-group">
+                           <input type="file" name="file">
+                       </div>
+                       <button type="submit" class="btn btn-primary">
+                          Загрузить фаил
+                       </button>
+                       </form>
+                         <a href= {% static name %}   download>
+                             <p>{{ namebtn }}</p>
+
+                         </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+
+
+{% endblock %}
