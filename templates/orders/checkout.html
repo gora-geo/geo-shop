@@ -7,38 +7,40 @@
         {% if  products_in_basket %}    {# условие если есть переменаая  products_in_basket описанная в orders/views.py#}
             <div class="col-lg-12">       {# ряд или ячейка будет сосаять 12 столбцов из 12 #}
                  <h3 class="text-center">Товары в корзине</h3>    {# text-center -в bootstrp выравнивание текста внутри элемеента(conteiner) #}
-                 <h5 class="text-center">Общая стоимость {{ request.session.basket.total_amount }} руб.</h5>         {# {{ request.session.basket.total_amount }} -выводим значение переменной total_amount(описана scripts.js) в текущей сессии(возможно это не нужно проверю позже)#}
-                         {{ request.session.basket.products }}    {# вывод переменной products товары в корзине(возможноэто не нужно проверю позже) #}
+               {# <h5 class="text-center">Общая стоимость {{ request.session.basket.total_amount }} руб.</h5>    #}        {# {{ request.session.basket.total_amount }} -выводим значение переменной total_amount(описана scripts.js) в текущей сессии(возможно это не нужно проверю позже)#}
+                        {#  {{ request.session.basket.products }}  #}   {# вывод переменной products товары в корзине(возможноэто не нужно проверю позже) #}
 
-            <form  class="form-inline" method="post">{% csrf_token %}    {#form-horizonta-в bootstrep элементы формы будут распологаться горизонтально, method="post"-методпостобработка {% csrf_token %}-нужен чтобы не делать пост запросы со сторнних сайтов#}
+            <form  class="form-horizontal" method="post">{% csrf_token %}    {#form-horizonta-в bootstrep элементы формы будут распологаться горизонтально, method="post"-методпостобработка {% csrf_token %}-нужен чтобы не делать пост запросы со сторнних сайтов#}
 
 
-             <div class="form-group">
+             <div id="name" class="form-group">
 
-                 <label>Имя</label>
+                 <label for="namephone" class="col-xs-1 control-label">Имя</label>
+                 <div class="col-xs-3">
                   <span class="form-error">{{ form.name.errors }}</span>           {#                  {{ form.errors }}   показывает ошибки формы #}
-              <input type="text"  name="{{ form.name.html_name }}" class="form-control"
+              <input id="namephone" type="text"  name="{{ form.name.html_name }}" class="form-control"
                        value="{{ request.POST.name }}">      {# отображаем значение если есть оштбка тоесть если не прошло валидацию #}
-
+                  </div>
              </div>
-               <div class="form-group">
+               <div id="phone" class="form-group">
 
-                   <label>Телефон</label>
+                   <label for="inphone" class="col-xs-1 control-label">Телефон</label>
+                   <div class="col-xs-3">
                     <span class="form-error">{{ form.phone.errors }}</span>
 
-                    <input type="text" name="{{ form.phone.html_name }}" class="form-control"
+                    <input id="inphone" type="text" name="{{ form.phone.html_name }}" class="form-control"
                              value="{{ request.POST.phone }}">    {# отображаем значение если есть оштбка тоесть если не прошло валидацию #}
-
+                  </div>
                  </div>
 
 
-             <table class="table text-center">  {#table  text-center -в бутстреп выранивание текта по центру в каждойячейкетаблицы #}
+             <table id="table" class="table text-left">  {#table  text-center -в бутстреп выранивание текта по центру в каждойячейкетаблицы #}
                         <thead>          {# описание заголовк таблицы #}
                              <tr>             {# описание строки #}
-                                 <th>Название товара</th>    {# описание столбца #}
-                                 <th>Количесво</th>
-                                 <th>Цена за единицу</th>
-                                 <th>Общая цена</th>
+                                 <th>    Название товара</th>    {# описание столбца #}
+                                 <th>    Количесво</th>
+                                 <th>    Цена за единицу</th>
+                                 <th>    Общая цена</th>
                              </tr>
                         </thead>
                          <tbody>                                                {# описание тела таблицы #}
@@ -70,15 +72,20 @@
 
                         </tbody>
                        </table>
-            <div class="text-right">      {# text-right-в bootstrap выврвнивание текста справа #}
-                          <b>Сумма заказа: </b><span id="total_order_amount">54</span>        {# <b>-устанавливает жирное  начертание шрифта,вводи строчного элемента  с id="total_order_amount" и значение ля примера 54 сюда будет выводиться общая сумма из scripts.js#}
+            <div class="text-left">      {# text-right-в bootstrap выврвнивание текста справа #}
+                <p>
+                          <b>Сумма заказа: </b><span id="total_order_amount">54</span>  <span> руб.</span>      {# <b>-устанавливает жирное  начертание шрифта,вводи строчного элемента  с id="total_order_amount" и значение ля примера 54 сюда будет выводиться общая сумма из scripts.js#}
+                </p>
                       </div>
-             <div class="text-right">          {# text-right-в bootstrap выврвнивание текста справа #}
-                        <button type="submit" class="btn btn-primary btn-lg">Заказать</button>   {# вводим кнопку типаsubmit-кнопка для отправки данных на сервер btn btn-primary btn-lg-оформление кнопки ootstrap #}
+             <div class="text-left">          {# text-right-в bootstrap выврвнивание текста справа #}
+                        <button id="zac" type="submit" class="btn btn-primary btn-lg">Заказать</button>   {# вводим кнопку типаsubmit-кнопка для отправки   данных на сервер btn btn-primary btn-lg-оформление кнопки ootstrap #}
+
                     </div>
 
              </form>
-
+            <div class="text-left">
+              <button id="oformit" type="submit" class="btn btn-primary btn-lg">Оформить заказ</button>
+            </div>
 
             </div>
 

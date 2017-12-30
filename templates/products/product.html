@@ -33,7 +33,7 @@
 
                    <p>
 
-                     Цена: {{ product.price }}  {# вывод цены #}
+                     Цена: {{ product.price }} руб. {# вывод цены #}
 
                     </p>
 
@@ -48,9 +48,7 @@
         <a href="#description" aria-controls="home" role="tab" data-toggle="tab"> {# "#description"-сылка на id описаноое ниже в   <!-- Tab panes --> #}
             Описание
         </a></li>
-    <li role="presentation"><a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">   {# "#delivery"-сылка на id описаноое ниже в   <!-- Tab panes --> #}
-        Доставка
-    </a></li>
+
 
   </ul>
 
@@ -59,20 +57,18 @@
     <div role="tabpanel" class="tab-pane active" id="description">
         {{ product.description }}   {# вывод атрибута description класса Product #}
     </div>
-    <div role="tabpanel" class="tab-pane" id="delivery">
-        <h3>Доставка осуществляеться до 22:00 по Москве в пределах МКАД</h3>
-    </div>
+
 
   </div>
     <form id="form_buying_product" class=" form-inline" action="{% url 'basket_adding' %}"> {% csrf_token %}   {# добовляем форму form-inline form-inline(в бутстрепе форма всеэлементы формы будут расположены в одну строку action="{% url 'basket_adding' %}-при нажати кнопки куппить сслка на значение функции basket_adding описанной в order/views  {% csrf_token %}-нужен чтобы не делать пост запросы со сторнних сайтов#}
-        <input type="number" class="form-control" name="number" id="number">  {# поле ввода со стрелочками для чисел  form-control(bootstrap-чтобы установить им ширину, равную 100% (всю доступную ширину родительского элемента).) #}
+        <input type="number" class="form-control" name="number" id="number" value="1" style="width: 50px">  {# поле ввода со стрелочками для чисел  form-control(bootstrap-чтобы установить им ширину, равную 100% (всю доступную ширину родительского элемента).) #}
 
     <button type="submit"  id="submit_btn" class="btn btn-success btn-buy"        {# type="submit"(кнопка для отправки данных на сервер) btn btn-success(оформление bootstrap) btn-buy-описан в style.css #}
             data-product_id = "{{ product.id }}"   {# data-это атрибут универсальный для всех тегов с изменяюшимися значениями здесь задаем data-product_id(который будет меняться от значения по перемменой  product.id, #}
             data-name="{{ product.name }}"    {# data-это атрибут универсальный для всех тегов с изменяюшимися значениями здесь задаем data-name(который будет  меняться от значения по перемменой  product.name#}
             data-price="{{ product.price }}"  {# аналогично строчке выше #}
            >
-        Купить
+        В корзину
     </button>
          </form>
 

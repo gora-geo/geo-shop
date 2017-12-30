@@ -1,0 +1,447 @@
+{% extends 'base.html' %}      {# фрагмент кода который вставляеться в base.html(между{% block content %} и  {% endblock content %}  #}
+{% load static %}              <!--загрузить паку static(load-агрузить)-->
+
+
+{% block content %}            {# начало блока контент #}
+
+<head>
+
+	<style type="text/css">
+		#circle1 {
+          width: 120px;
+          height: 120px;
+          background: #7fee1d;
+         -moz-border-radius: 60px;
+         -webkit-border-radius: 60px;
+          border-radius: 60px;
+          position: absolute;
+          opacity: 0.5;
+
+
+           /* Chrome, Safari, Opera */
+          -webkit-animation-name: movewords;
+          -webkit-animation-duration: 6s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-delay: 0s;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-direction: alternate;
+          -webkit-animation-play-state: running;
+          /* Standard syntax */
+          animation-name: movewords;
+          animation-duration: 6s;
+          animation-timing-function: linear;
+          animation-delay: 0s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-play-state: running;
+       }
+
+       #circle2 {
+          width: 120px;
+          height: 120px;
+          background: #7fee1d;
+         -moz-border-radius: 60px;
+         -webkit-border-radius: 60px;
+          border-radius: 60px;
+          position: absolute;
+          opacity: 0.5;
+
+
+           /* Chrome, Safari, Opera */
+          -webkit-animation-name: movewords2;
+          -webkit-animation-duration: 6s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-delay: 0s;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-direction: alternate;
+          -webkit-animation-play-state: running;
+          /* Standard syntax */
+          animation-name: movewords2;
+          animation-duration: 6s;
+          animation-timing-function: linear;
+          animation-delay: 0s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-play-state: running;
+       }
+
+
+       #circle3 {
+          width: 120px;
+          height: 120px;
+          background: #7fee1d;
+         -moz-border-radius: 60px;
+         -webkit-border-radius: 60px;
+          border-radius: 60px;
+          position: absolute;
+          opacity: 0.5;
+
+
+           /* Chrome, Safari, Opera */
+          -webkit-animation-name: movewords3;
+          -webkit-animation-duration: 6s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-delay: 0s;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-direction: alternate;
+          -webkit-animation-play-state: running;
+          /* Standard syntax */
+          animation-name: movewords3;
+          animation-duration: 6s;
+          animation-timing-function: linear;
+          animation-delay: 0s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-play-state: running;
+       }
+
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes movewords {
+    0%   {background:red; left:900px; top:0px;}
+    25%  {background:blue; left:500px; top:100px;}
+    50%  {background:blue; left:300px; top:200px;}
+    75%  {background:blue; left:500px; top:200px;}
+    100% {background:red; left:900px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes movewords {
+    0%   {background:red; left:700px; top:0px;}
+    25%  {background:blue; left:500px; top:100px;}
+    50%  {background:blue; left:300px; top:200px;}
+    75%  {background:blue; left:500px; top:200px;}
+    100% {background:red; left:700px; top:0px;}
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes movewords2 {
+    0%   {background:red; left:300px; top:0px;}
+    25%  {background:blue; left:500px; top:100px;}
+    50%  {background:blue; left:800px; top:200px;}
+    75%  {background:blue; left:5100px; top:200px;}
+    100% {background:red; left:300px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes movewords2 {
+    0%   {background:red; left:300px; top:0px;}
+    25%  {background:blue; left:500px; top:100px;}
+    50%  {background:blue; left:800px; top:200px;}
+    75%  {background:blue; left:500px; top:200px;}
+    100% {background:red; left:300px; top:0px;}
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes movewords3 {
+    0%   {background:red; left:300px; top:200px;}
+    25%  {background:blue; left:700px; top:100px;}
+    50%  {background:blue; left:300px; top:10px;}
+    75%  {background:blue; left:300px; top:100px;}
+    100% {background:red; left:700px; top:200px;}
+}
+
+/* Standard syntax */
+@keyframes movewords3 {
+    0%   {background:red; left:300px; top:200px;}
+    25%  {background:blue; left:700px; top:100px;}
+    50%  {background:blue; left:300px; top:10px;}
+    75%  {background:blue; left:700px; top:100px;}
+    100% {background:red; left:300px; top:200px;}
+}
+
+
+	</style>
+	<script type="text/javascript">
+	var sp_kord = [];
+	function registerEvents() {
+	   	document.xyS.include.addEventListener('click',xytext,false);
+	   	document.xyS.include2.addEventListener('click',xyPloh,false);
+	   	document.xyS.include3.addEventListener('click',clear,false);
+	   	document.xyS.include4.addEventListener('click',draw,false);
+	   
+
+	   }
+
+       
+       function xytext() {
+       	var x = (parseFloat(document.xyS.x.value)).toFixed(3);
+       	console.log(x);
+       	var y = (parseFloat(document.xyS.y.value)).toFixed(3);
+       	var xy_sp = [x,y];
+       	console.log(sp_kord.length);
+       	if (isNaN(x)||isNaN(y)) {
+       		alert("ошибка введеных данных")
+
+       	} else {
+       		sp_kord[(sp_kord.length)] = xy_sp;
+         	var kord = "x="+ x + "  ,  y= " + y +"\n\r"
+       	    var kord_history = document.xyS.xy.value
+         	var kord_new = kord_history + kord;
+            document.xyS.xy.value = kord_new;
+
+       	       }
+
+       }
+        function xyPloh() {
+        	var sum = 0;
+        	var i1 = 0;
+        	var i2 = 0;
+        	if (sp_kord.length < 3) {
+        		alert("необходимо минимум три координаты");
+
+        	} else {
+        		for (x=0; x < sp_kord.length-1; x++ ) {
+        		sum = sum + sp_kord[i1][0]*sp_kord[i1+1][1];
+        		i1= i1+1;
+
+        	}
+        	for (x=0; x < sp_kord.length-1; x++ ) {
+        		sum = sum - sp_kord[i2+1][0]*sp_kord[i2][1];
+        		i2= i2+1;
+
+        	}
+        	sum = 0.5 * Math.abs((sum + sp_kord[i1][0]*sp_kord[0][1] - sp_kord[0][0]*sp_kord[i2][1] ));
+        	console.log(sum);
+        	//alert("S=",parseFloat(sum));
+        	document.getElementById("ploh").innerHTML = "Площадь равна = " + sum.toFixed(3);
+
+
+        	}
+
+        	
+        }
+        function clear() {
+        	document.getElementById("ploh").innerHTML = " ";
+        	sp_kord = [];
+          sp_kord2 = [];
+
+
+        }
+         function draw() {
+           var canvas = document.getElementById('canvas');
+           if (canvas.getContext) {
+
+           var ctx = canvas.getContext('2d');  //вызываем контекст рисования тоесть холст
+           ctx.clearRect(0, 0, 500, 500);
+           for (var x = 0.5; x < 500; x += 10) { //Рисование вертикальных линий
+             ctx.moveTo(x, 0); //перемещает карандаш к указанной начальной точке.
+             ctx.lineTo(x, 500);//рисует линии до указанной конечной точки.
+              }
+            for (var y = 0.5; y < 500; y += 10) { //Рисование горизонтальных линий
+
+                  ctx.moveTo(0, y);
+                  ctx.lineTo(500, y);
+                }
+             ctx.strokeStyle = "#eee"; //стиль линиии серый
+             ctx.stroke();  // принимает сложный контур, заданный всеми вызовами moveTo() и lineTo(), и рисует его на холсте.
+
+
+           ctx.beginPath();  //рисуем оси координат
+           ctx.moveTo(0, 250);
+           ctx.lineTo(500, 250);
+           ctx.moveTo(250, 0);
+           ctx.lineTo(250, 500);
+           ctx.strokeStyle = "#000";
+           ctx.stroke();
+           ctx.font = "bold 15px sans-serif";  //задаем стильтекста на холсте
+           ctx.fillText("x", 490, 260); //рисуем х
+           ctx.fillText("y", 260, 10); //рисуем y
+           ctx.fillText("(0,0)", 210, 270); //рисуем y
+
+
+
+
+
+
+            var sp_kord2=[];
+            var x2=0;
+            var y2=0;
+            for (n=0; n < sp_kord.length; n++ ) {
+
+                x2=250-(sp_kord[n][0]*0.025);
+                y2=250-(sp_kord[n][1]*0.025);
+
+              sp_kord2[n] = [x2,y2];
+            }
+
+
+            ctx.beginPath();
+
+            ctx.moveTo( sp_kord2[0][0], sp_kord2[0][1]);
+            console.log(sp_kord2[0][0], sp_kord2[0][1]);
+            for (n=1; n < sp_kord2.length; n++ ) {
+
+              console.log(sp_kord2[n][0], sp_kord2[n][1]);
+              ctx.lineTo( sp_kord2[n][0], sp_kord2[n][1]);
+                   }
+            
+            
+            ctx.fill();
+               }
+            }
+
+       
+	</script>
+
+   <script type="text/javascript">
+
+        window.addEventListener("load",registerEvents2,false);
+
+                 function registerEvents2(e){
+                          document.getElementById("circle1").style.webkitAnimationPlayState = "running";
+                          document.getElementById("circle1").style.AnimationPlayState = "running";
+                           document.getElementById("circle2").style.webkitAnimationPlayState = "running";
+                          document.getElementById("circle2").style.AnimationPlayState = "running";
+                          document.getElementById("circle3").style.webkitAnimationPlayState = "running";
+                          document.getElementById("circle3").style.AnimationPlayState = "running";
+
+
+                          
+                           }
+   </script>
+   <script type="text/javascript">
+            var ball = {
+            	create: function() {
+            		// var div = document.createElement('div');
+              //       div.id = "circle";
+              //       div.style = "position: absolute; border-radius: 150px; background: #7fee1d; width: 220px; height: 220px;";
+                    
+            		 // document.getElementById("circle2").innerHTML += '<div id="circle" style="position: absolute; border-radius: 150px; background: #7fee1d; width: 220px; height: 220px;opacity: 0.5; left:'+ String(Math.random()) + '"></div>';
+
+            		 var circle_new = document.getElementById('circle4');
+            		 var div = document.createElement('div');
+
+            		 var a = String(Math.random()*250);
+            		 function getRandomInRange(min, max) {   //случайное целое числопогуглил
+                           return Math.floor(Math.random() * (max - min + 1)) + min;
+                      }
+
+                      div.innerHTML = '<div id="circle'+ getRandomInRange(1, 3) +'" style="position: absolute; border-radius: 150px; background: #7fee1d; width: '+ a +'px; height: '+ a + 'px;opacity: 0.5; "></div>';
+
+                      circle_new.appendChild(div);
+
+            	}
+
+            		
+            	}
+
+
+
+                                    
+
+          
+            window.addEventListener("load",registerEvents3,false);
+
+                  function registerEvents3(e){
+                     document.getElementById("ball").addEventListener("click",ball.create,false);
+                     
+                     }
+                     
+                        
+
+    
+      
+
+
+   </script>
+          
+
+ <script src="http://code.jquery.com/jquery-1.11.2.min.js">
+    </script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+
+      $('#canvas').hide();
+      
+      $('#figure').on('click',function() {
+
+      	 var el = $(this);    //$(this)===$('#figure')
+           var swap = el.data("swap");
+           var text = el.data("text");
+           el.data("text", swap);
+           el.data("swap", text);
+           el.html(swap);
+
+        $('#button3').fadeToggle(300);
+        $('#button2').slideToggle(100);
+        $('#button1').toggle(200);
+        $('#x').toggle(200);
+        $('#y').toggle(200);
+        $('#xy').toggle(200);
+        $('#canvas').toggle(200);
+         
+    });
+
+    });
+    </script>
+    <script type="text/javascript">
+ 
+        
+    </script>
+
+</head>
+ <body onload="registerEvents()">
+     <div class="container">         {# Он имеет строго определённую ширину для определённого типа устройств. Т.е. для одного устройства контейнер имеет одну ширину, для другого устройства - другое значение ширины. Bootstrap требует этот элемент для row(обязательный)тип устройства задаеться ниже у нас lg-компьютер #}
+
+        <div class="row">        {#1 ряд в строке  в бутстрепе этозадаетьсясетка описанная ниже #}
+
+            <div class="col-lg-8">   {# ряд или ячейка будет сосаять 6 столбцов из 12 #}
+	
+	<form name="xyS" class="form-horizontal">
+        <div id="x" class="form-group">
+            <label for="inputx" class="col-xs-1 control-label">X =</label>
+              <div class="col-xs-4">
+              <input type="text" name="x" class="form-control" id="inputx" placeholder="введите координату X">
+              </div>
+        </div>
+        <div id="y" class="form-group">
+            <label for="inputy" class="col-xs-1 control-label">Y = </label>
+              <div class="col-xs-4">
+              <input type="text" name="y" class="form-control" id="inputy" placeholder="введите координату Y">
+              </div>
+
+		</div>
+        <div class="form-group">
+            <div class="col-xs-offset-1 col-xs-4">
+			<textarea class="form-control" rows="10" cols="60" name="xy" id="xy" placeholder="введенные вами координаты"></textarea>
+            </div>
+	    </div>
+
+
+			<p>
+			 
+			 <input type="button" name="include" id="button1" value="принять координаты" class="btn btn-default">
+
+			
+				<button type="reset" name="include3" id="button2" class="btn btn-default">Очистить</button>
+			 <input type="button" name="include2" id="button3" value="Расчитать площадь" class="btn btn-default">
+			
+			</p>
+			<button type="button" id="figure" name="include4" data-swap="Вернуться обратно" data-text="Показать фигуру" class="btn btn-default">
+
+				
+			Показать фигуру
+		     </button>
+              <input type="button" name="ball" id="ball" value="Еще шар" class="btn btn-default">
+
+			<p id ="ploh"></p>
+
+			
+		
+	</form>
+	<p>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<div id="circle1"></div>
+	<div id="circle4"></div>
+
+</p>
+                </div>
+            </div>
+         </div>
+
+</body>
+
+
+{% endblock %}

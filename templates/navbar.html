@@ -14,7 +14,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Домой</a></li>  <!--при нажатии на слово домой будет переход на коренвую папку  localhost:8000 -->
+            <li class="active"><a href="/">
+
+                Домой
+
+            </a></li>  <!--при нажатии на слово домой будет переход на коренвую папку  localhost:8000 -->
 
             <li><a href="/contact/">Контакты</a></li>
             <li class="dropdown">
@@ -39,11 +43,14 @@
               </ul>
             </li>
            <li><a href="/convert/">Конвертер</a></li>
+           <li><a href="/ploh/">Площадь</a></li>
+              <li><a href="/dostavka/">Оплата и Доставка</a></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
 
                <div class="basket-container">
-                   <a href="/checkout/">
+
                        Корзина
                        <span id="basket_total_amount"></span><span id="basket_total_nmb">
 
@@ -52,10 +59,10 @@
                       {% else %}
                          (0)                  {# выводим ноль если ее нет #}
                       {% endif %}
-                   </span>
-                   </a>
-              <div class="basket-items hidden">   {# hidden-элемент становиться невидимым #}
-                  <ul class="">
+
+
+              <div class="basket-items hidden" >   {# hidden-элемент становиться невидимым #}
+                  <ul class="ulbasket">
                        {% for product_in_basket in products_in_basket %}   {# запиус цикла поо перебору значений перемменой(словаря) products_in_basket описанной в orders/views #}
 
 
@@ -70,9 +77,12 @@
                                 </li>
 
                   {% endfor %}
-
+                    <a href="/checkout/">Перейти в корзину</a>
                   </ul>
               </div>
+
+               </span>
+
             </div>
           </ul>
         </div><!--/.nav-collapse -->

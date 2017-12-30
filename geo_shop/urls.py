@@ -29,5 +29,8 @@ urlpatterns = [
     url(r'^', include('orders.urls')), # include(включить из папки landing  из файла urlтоесть включить по адресу указанному в этом пути страницу)
     url(r'^', include('contact.urls')),
     url(r'^', include('convert.urls')),
+    url(r'^', include('ploh.urls')),
+    url(r'^', include('dostavka.urls')),
+
 
 ]
