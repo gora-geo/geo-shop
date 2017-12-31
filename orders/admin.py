@@ -33,6 +33,7 @@ class ProductInOrderAdmin (admin.ModelAdmin):  #создает таблицу в
     class Meta:
         model = ProductInOrder
 
+
 admin.site.register(ProductInOrder, ProductInOrderAdmin)
 
 

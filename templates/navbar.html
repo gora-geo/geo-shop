@@ -61,12 +61,17 @@
                       {% endif %}
 
 
-              <div class="basket-items hidden" >   {# hidden-элемент становиться невидимым #}
+              <div class="basket-items " >   {# hidden-элемент становиться невидимым #}
                   <ul class="ulbasket">
                        {% for product_in_basket in products_in_basket %}   {# запиус цикла поо перебору значений перемменой(словаря) products_in_basket описанной в orders/views #}
 
 
-                               <li>
+                               <li style="list-style-type: none">
+{#                               <div >#}
+{#                          <a href="{% url 'product' product_image.product.id %}">   {# ссылка на объект класса product по id #}
+{#                          <img src="{{ product_image.image.url }}" > {# ссылка на картинку по юрл #}
+{#                          </a>#}
+{#                               </div>#}
 
                                   {{ product_in_basket.product.name }} {{ product_in_basket.nmb }} шт.        {# вывод имени и количества по  элеменнту цикла #}
 

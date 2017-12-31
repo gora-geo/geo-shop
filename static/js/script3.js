@@ -1,11 +1,26 @@
 
-$(document).on('mouseover','.basket-container',function(){
-    $('.basket-items').removeClass('hidden');
-});
-$(document).on('mouseout','.basket-items',function(){
-    $('.basket-items').addClass('hidden');
-});
+//$(document).on('click','.basket-container',function(){
+//    $('.basket-items').removeClass('hidden');
+//});
+//$(document).on('click','.basket-container',function(){
+//    $('.basket-items').addClass('hidden');
+//});
+$(document).ready(function(){
+$('.basket-items').hide();
+    $('.basket-container').mouseover(function() {
+        $('.basket-items').show();
+        $('.basket-items').mouseout(function(){
+            $('.basket-items').hide();
+        });
 
+    });
+});
+$(document).ready(function(){                // стандартная обертка jqery которая говорит о том что даннный код будетвыполняться после токго как загрузиться весь html-документ
+    var form = $('#form_buying_product');
+    form.on('submit', function(){
+        setTimeout(function() {window.location.reload();}, 3000);
+    });
+});
 
 
 //$(document).ready(function(){

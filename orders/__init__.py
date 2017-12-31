@@ -1,1 +1,1 @@
-__author__ = 'жора'
+default_app_config = "orders.apps.InterstoreAppConfig"
